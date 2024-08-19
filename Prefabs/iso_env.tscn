@@ -10,5 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bqsj3xbkepalf" path="res://Assets/Dice/SixDie.png" id="8_04vx0"]
 
 [node name="IsoEnv" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_u8bhb")
 die_sprites = Array[CompressedTexture2D]([ExtResource("2_gxouv"), ExtResource("3_eptkj"), ExtResource("4_q6tvg"), ExtResource("5_raaak"), ExtResource("6_q52xi"), ExtResource("7_c5dkj"), ExtResource("8_04vx0")])

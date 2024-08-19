@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://44gjdk8s7iqd"]
+[gd_scene load_steps=34 format=3 uid="uid://44gjdk8s7iqd"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_rypjy"]
 [ext_resource type="Script" path="res://Scripts/RollTableSettings.gd" id="2_mpfth"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://dp6knt320qse4" path="res://Assets/SFX/button_up.ogg" id="10_7jxov"]
 [ext_resource type="Texture2D" uid="uid://djj0nd7bfxyxm" path="res://Assets/UI/ButtonIcons/RollTables.png" id="10_hsgxl"]
 [ext_resource type="Texture2D" uid="uid://dp80e63fv7uww" path="res://Assets/UI/Buttons/plus_button.png" id="11_fp6hf"]
+[ext_resource type="PackedScene" uid="uid://cftr1fb0m04qb" path="res://Prefabs/settings_page.tscn" id="21_6l8is"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kewbd"]
 playback_mode = 1
@@ -354,6 +355,12 @@ icon = ExtResource("10_hsgxl")
 [node name="Spacer2" type="Control" parent="UI/RightButtons/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
+
+[node name="SettingsPage" parent="UI" node_paths=PackedStringArray("cam_node") instance=ExtResource("21_6l8is")]
+unique_name_in_owner = true
+offset_top = 2400.0
+offset_bottom = 2400.0
+cam_node = NodePath("../../Camera2D")
 
 [connection signal="item_clicked" from="UI" to="." method="_on_ui_item_clicked"]
 [connection signal="button_up" from="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer/StoreButton" to="UI" method="_on_store_button_button_up"]

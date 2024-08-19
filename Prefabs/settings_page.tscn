@@ -1,14 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://cftr1fb0m04qb"]
+[gd_scene load_steps=7 format=3 uid="uid://cftr1fb0m04qb"]
 
 [ext_resource type="Theme" uid="uid://ctisjefie00x2" path="res://Assets/UI/Themes/Button.tres" id="1_3tg8g"]
+[ext_resource type="Script" path="res://Scripts/Settings.gd" id="2_trc80"]
+[ext_resource type="AudioStream" uid="uid://c57dj2ol05lyt" path="res://Assets/SFX/button_down.ogg" id="3_ns3s1"]
+[ext_resource type="AudioStream" uid="uid://dp6knt320qse4" path="res://Assets/SFX/button_up.ogg" id="4_dvtdh"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_x2vwa"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_ns3s1")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2t4oh"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_dvtdh")
 
 [node name="SettingsPage" type="PanelContainer"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3tg8g")
+script = ExtResource("2_trc80")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -64,7 +81,7 @@ layout_mode = 2
 [node name="ResetButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "   Reset   "
+text = "      Reset      "
 
 [node name="Spacer4" type="Control" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
@@ -76,3 +93,20 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 18
 text = "   Back   "
+
+[node name="AudioStreams" type="Node" parent="."]
+
+[node name="ButtonDownSFX" type="AudioStreamPlayer2D" parent="AudioStreams"]
+stream = SubResource("AudioStreamRandomizer_x2vwa")
+bus = &"Buttons"
+
+[node name="ButtonUpSFX" type="AudioStreamPlayer2D" parent="AudioStreams"]
+stream = SubResource("AudioStreamRandomizer_2t4oh")
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/StartingDice/SpinBox" to="." method="_on_spin_box_value_changed"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/ResetCamButton" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/ResetCamButton" to="." method="_on_reset_cam_button_button_up"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/ResetButton" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_button_up"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/Back Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/Back Button" to="." method="_on_back_button_button_up"]

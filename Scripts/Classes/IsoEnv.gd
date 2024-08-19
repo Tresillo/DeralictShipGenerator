@@ -17,6 +17,7 @@ const ISOGRIDSIZE: int = 37
 
 func _ready():
 	available_positions = {0: [Vector2i.ZERO]}
+	get_tree().paused = false
 
 
 func isopos_to_isogrid_point(pos: IsoCoord) -> IsoCoord:
