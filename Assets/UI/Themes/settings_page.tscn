@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://cftr1fb0m04qb"]
+
+[ext_resource type="Theme" uid="uid://ctisjefie00x2" path="res://Assets/UI/Themes/Button.tres" id="1_3tg8g"]
+
+[node name="SettingsPage" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3tg8g")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="StartingDice" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="StartingDiceLabel" type="Label" parent="MarginContainer/VBoxContainer/StartingDice"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Starting Dice   "
+horizontal_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/StartingDice"]
+layout_mode = 2
+max_value = 30.0
+alignment = 1
+update_on_text_changed = true
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ResetCamButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "   Reset Camera   "
+
+[node name="Spacer3" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "   Reset   "

@@ -1,11 +1,9 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://ctisjefie00x2"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://ctisjefie00x2"]
 
 [ext_resource type="Texture2D" uid="uid://b6fbydy861hcv" path="res://Assets/UI/Buttons/ButtonHover.png" id="1_kxkdq"]
 [ext_resource type="Texture2D" uid="uid://bj23ccgvvwb74" path="res://Assets/UI/Buttons/ButtonUp.png" id="2_hbrku"]
 [ext_resource type="Texture2D" uid="uid://b8g1qjikhykkn" path="res://Assets/UI/Buttons/ButtonDown.png" id="3_ise3q"]
-
-[sub_resource type="SystemFont" id="SystemFont_m28ir"]
-font_weight = 450
+[ext_resource type="FontFile" uid="uid://c6em21cf3yld1" path="res://Assets/UI/Fonts/HomeVideo-Regular.ttf" id="4_q621r"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wsc2s"]
 texture = ExtResource("1_kxkdq")
@@ -28,9 +26,27 @@ texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gocfp"]
+bg_color = Color(0.0431373, 0.0431373, 0.0431373, 0.45098)
+
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
-Button/fonts/font = SubResource("SystemFont_m28ir")
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 4
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("4_q621r")
 Button/styles/hover = SubResource("StyleBoxTexture_wsc2s")
 Button/styles/normal = SubResource("StyleBoxTexture_ifnhp")
 Button/styles/pressed = SubResource("StyleBoxTexture_d286x")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/line_spacing = 2
+Label/constants/outline_size = 8
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("4_q621r")
+LineEdit/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+LineEdit/colors/font_outline_color = Color(0, 0, 0, 1)
+LineEdit/constants/outline_size = 2
+LineEdit/font_sizes/font_size = 24
+LineEdit/fonts/font = ExtResource("4_q621r")
+Panel/styles/panel = SubResource("StyleBoxFlat_gocfp")

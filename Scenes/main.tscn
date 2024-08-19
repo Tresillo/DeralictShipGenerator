@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://44gjdk8s7iqd"]
+[gd_scene load_steps=33 format=3 uid="uid://44gjdk8s7iqd"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_rypjy"]
 [ext_resource type="Script" path="res://Scripts/RollTableSettings.gd" id="2_mpfth"]
@@ -19,7 +19,6 @@
 [ext_resource type="AudioStream" uid="uid://b0n5ls3rr34af" path="res://Assets/SFX/remove_die_item.ogg" id="9_gdybf"]
 [ext_resource type="AudioStream" uid="uid://dp6knt320qse4" path="res://Assets/SFX/button_up.ogg" id="10_7jxov"]
 [ext_resource type="Texture2D" uid="uid://djj0nd7bfxyxm" path="res://Assets/UI/ButtonIcons/RollTables.png" id="10_hsgxl"]
-[ext_resource type="Texture2D" uid="uid://652l16tokcl1" path="res://Assets/UI/ButtonIcons/ChangeViewIcon.png" id="10_ty6xh"]
 [ext_resource type="Texture2D" uid="uid://dp80e63fv7uww" path="res://Assets/UI/Buttons/plus_button.png" id="11_fp6hf"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kewbd"]
@@ -119,12 +118,12 @@ origin_rect = NodePath("OriginTile")
 
 [node name="PlacingSFX" type="AudioStreamPlayer2D" parent="AudioStreams"]
 stream = SubResource("AudioStreamRandomizer_kewbd")
-volume_db = -12.0
+volume_db = -20.0
 bus = &"Buttons"
 
 [node name="StoringSFX" type="AudioStreamPlayer2D" parent="AudioStreams"]
 stream = SubResource("AudioStreamRandomizer_eg2i4")
-volume_db = -24.0
+volume_db = -32.0
 bus = &"Buttons"
 
 [node name="RollTableSettings" type="Node" parent="."]
@@ -353,10 +352,6 @@ icon = ExtResource("10_hsgxl")
 [node name="Spacer2" type="Control" parent="UI/RightButtons/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
-
-[node name="ChangeViewButton" parent="UI/RightButtons/CenterContainer/VBoxContainer" instance=ExtResource("5_lnkvp")]
-layout_mode = 2
-icon = ExtResource("10_ty6xh")
 
 [connection signal="item_clicked" from="UI" to="." method="_on_ui_item_clicked"]
 [connection signal="button_up" from="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer/StoreButton" to="UI" method="_on_store_button_button_up"]

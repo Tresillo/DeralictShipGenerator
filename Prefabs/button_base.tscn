@@ -10,13 +10,13 @@
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mypca"]
 playback_mode = 1
-random_pitch = 1.1
+random_pitch = 1.05
 streams_count = 1
 stream_0/stream = ExtResource("6_si1ng")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ybl71"]
 playback_mode = 1
-random_pitch = 1.1
+random_pitch = 1.05
 streams_count = 1
 stream_0/stream = ExtResource("7_amr26")
 
