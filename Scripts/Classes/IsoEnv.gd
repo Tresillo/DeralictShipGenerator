@@ -10,6 +10,7 @@ var available_positions: Dictionary
 @onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 @export var die_sprites: Array[CompressedTexture2D]
+@export var starting_dice: int = 8
 
 const ISOGRIDSIZE: int = 37
 

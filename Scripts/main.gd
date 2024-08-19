@@ -5,8 +5,6 @@ extends Node2D
 @export var camera: Camera2D
 @export var origin_rect: TextureRect
 
-@export var starting_dice: int = 8
-
 @onready var isoenv_node: IsoEnv = get_node("/root/GlobalIsoEnv")
 @onready var iso_object_prefab = preload("res://Prefabs/iso_object.tscn")
 
@@ -27,7 +25,7 @@ func _ready():
 	isogrid_size = isoenv_node.ISOGRIDSIZE
 	
 	#add starting
-	for i in range(starting_dice):
+	for i in range(isoenv_node.starting_dice):
 		$UI.add_die_to_tray(isoenv_node.rng.randi_range(1,6))
 	$UI.tray_scroll_container.set_deferred("scroll_vertical", 0)
 

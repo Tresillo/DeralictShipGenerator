@@ -108,6 +108,7 @@ streams_count = 1
 stream_0/stream = ExtResource("9_gdybf")
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("placing_ghost", "roll_tables", "camera", "origin_rect")]
+process_mode = 1
 script = ExtResource("1_rypjy")
 placing_ghost = NodePath("PlacingGhost")
 roll_tables = NodePath("RollTableSettings")
@@ -137,6 +138,7 @@ gizmo_extents = 19.0
 visible = false
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("grid_node")]
+process_mode = 3
 script = ExtResource("5_1eu8a")
 grid_node = NodePath("../Background")
 

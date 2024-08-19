@@ -13,9 +13,9 @@ theme = ExtResource("1_3tg8g")
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 200
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 75
 theme_override_constants/margin_right = 200
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_bottom = 75
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -30,6 +30,7 @@ horizontal_alignment = 1
 [node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="StartingDice" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -64,3 +65,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 text = "   Reset   "
+
+[node name="Spacer4" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Back Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 18
+text = "   Back   "
