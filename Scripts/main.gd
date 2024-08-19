@@ -42,6 +42,9 @@ func _unhandled_input(event):
 		var mouse_pos_delta = get_local_mouse_position() - camera.last_pan_mouse_pos
 		camera.target_pos -= mouse_pos_delta * camera.pan_sensitivity
 		camera.last_pan_mouse_pos = get_local_mouse_position()
+	
+	if event.is_action_pressed("pause"):
+		pause_game()
 
 
 func _physics_process(delta):
@@ -233,6 +236,12 @@ func place_all_tray_dice():
 		
 		$UI.place_all_enabled = true
 		$UI.store_all_enabled = true
+
+
+func pause_game():
+	(func(): get_tree().paused = true).call_deferred()
+	%SettingsPage.visible = true
+	%SettingsPage.position = Vector2.ZERO
 
 
 func die_place_sound():

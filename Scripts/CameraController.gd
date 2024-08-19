@@ -41,17 +41,18 @@ func _process(delta):
 
 
 func _unhandled_input(event):
-	if event.is_action_pressed("cam_pan"):
-		panning = true
-		last_pan_mouse_pos = get_parent().get_local_mouse_position()
-	
-	if event.is_action_released("cam_pan"):
-		panning = false
-	
-	if event.is_action_pressed("cam_zoom_in"):
-		var new_zoom = max(zoom_bounds_min, current_zoom.x - zoom_sensitivity*current_zoom.x)
-		current_zoom = Vector2(new_zoom,new_zoom)
-	
-	if event.is_action_pressed("cam_zoom_out"):
-		var new_zoom = min(zoom_bounds_max, current_zoom.x + zoom_sensitivity*current_zoom.x)
-		current_zoom = Vector2(new_zoom,new_zoom)
+	if get_tree().paused == false:
+		if event.is_action_pressed("cam_pan"):
+			panning = true
+			last_pan_mouse_pos = get_parent().get_local_mouse_position()
+		
+		if event.is_action_released("cam_pan"):
+			panning = false
+		
+		if event.is_action_pressed("cam_zoom_in"):
+			var new_zoom = max(zoom_bounds_min, current_zoom.x - zoom_sensitivity*current_zoom.x)
+			current_zoom = Vector2(new_zoom,new_zoom)
+		
+		if event.is_action_pressed("cam_zoom_out"):
+			var new_zoom = min(zoom_bounds_max, current_zoom.x + zoom_sensitivity*current_zoom.x)
+			current_zoom = Vector2(new_zoom,new_zoom)

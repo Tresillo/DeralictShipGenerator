@@ -144,6 +144,7 @@ script = ExtResource("5_1eu8a")
 grid_node = NodePath("../Background")
 
 [node name="Background" type="Node2D" parent="."]
+process_mode = 3
 z_index = -4096
 z_as_relative = false
 
@@ -368,4 +369,5 @@ cam_node = NodePath("../../Camera2D")
 [connection signal="button_up" from="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer/PlaceAllButton" to="UI" method="_on_place_all_button_button_up"]
 [connection signal="button_down" from="UI/TabTray/MarginContainer/VBoxContainer/Dice/ScrollContainer/VBoxContainer/AddDiceButton" to="UI" method="_on_add_dice_button_button_down"]
 [connection signal="button_up" from="UI/TabTray/MarginContainer/VBoxContainer/Dice/ScrollContainer/VBoxContainer/AddDiceButton" to="UI" method="_on_add_dice_button_button_up"]
+[connection signal="button_up" from="UI/RightButtons/CenterContainer/VBoxContainer/SettingsButton" to="." method="pause_game"]
 [connection signal="button_up" from="UI/RightButtons/CenterContainer/VBoxContainer/RollTables" to="." method="_on_roll_tables_button_up"]
