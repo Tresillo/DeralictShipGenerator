@@ -1,0 +1,14 @@
+[gd_scene load_steps=9 format=3 uid="uid://cy8vmuasvsja"]
+
+[ext_resource type="Script" path="res://Scripts/Classes/IsoEnv.gd" id="1_u8bhb"]
+[ext_resource type="Texture2D" uid="uid://dr10ciqdo53cg" path="res://Assets/Dice/EmptyDie.png" id="2_gxouv"]
+[ext_resource type="Texture2D" uid="uid://nhsjlduslqtj" path="res://Assets/Dice/OneDie.png" id="3_eptkj"]
+[ext_resource type="Texture2D" uid="uid://bjgkxfft5wq3v" path="res://Assets/Dice/TwoDie.png" id="4_q6tvg"]
+[ext_resource type="Texture2D" uid="uid://d0lrcm7q4mfqs" path="res://Assets/Dice/ThreeDie.png" id="5_raaak"]
+[ext_resource type="Texture2D" uid="uid://dfnhymnn7ujqd" path="res://Assets/Dice/FourDie.png" id="6_q52xi"]
+[ext_resource type="Texture2D" uid="uid://dl14s2j5vxo4j" path="res://Assets/Dice/FiveDie.png" id="7_c5dkj"]
+[ext_resource type="Texture2D" uid="uid://bqsj3xbkepalf" path="res://Assets/Dice/SixDie.png" id="8_04vx0"]
+
+[node name="IsoEnv" type="Node2D"]
+script = ExtResource("1_u8bhb")
+die_sprites = Array[CompressedTexture2D]([ExtResource("2_gxouv"), ExtResource("3_eptkj"), ExtResource("4_q6tvg"), ExtResource("5_raaak"), ExtResource("6_q52xi"), ExtResource("7_c5dkj"), ExtResource("8_04vx0")])

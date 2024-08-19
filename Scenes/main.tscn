@@ -1,0 +1,367 @@
+[gd_scene load_steps=34 format=3 uid="uid://44gjdk8s7iqd"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_rypjy"]
+[ext_resource type="Script" path="res://Scripts/RollTableSettings.gd" id="2_mpfth"]
+[ext_resource type="AudioStream" uid="uid://d3r7lxqt22yf6" path="res://Assets/SFX/place_die.ogg" id="2_rirfd"]
+[ext_resource type="PackedScene" uid="uid://367j11gbkjps" path="res://Prefabs/placing_ghost.tscn" id="3_2da6m"]
+[ext_resource type="Script" path="res://Scripts/Classes/RollTable.gd" id="3_n7moq"]
+[ext_resource type="AudioStream" uid="uid://bpoqga1bfopg5" path="res://Assets/SFX/store_die.ogg" id="3_srbqy"]
+[ext_resource type="Script" path="res://Scripts/UIController.gd" id="4_3vn5e"]
+[ext_resource type="Texture2D" uid="uid://c0qjxj4xp3ct8" path="res://Assets/UI/DiceTrayTrimmed.png" id="4_maxtx"]
+[ext_resource type="Script" path="res://Scripts/CameraController.gd" id="5_1eu8a"]
+[ext_resource type="PackedScene" uid="uid://c6j4opv2d2rgg" path="res://Prefabs/button_base.tscn" id="5_lnkvp"]
+[ext_resource type="Texture2D" uid="uid://bm0560xtuwfgh" path="res://Assets/UI/Background/Grid_Style_C-64x32.png" id="6_t6tya"]
+[ext_resource type="Texture2D" uid="uid://rxb3oxrbrppd" path="res://Assets/UI/ButtonIcons/PutAwayIcon.png" id="6_tjkja"]
+[ext_resource type="Texture2D" uid="uid://cgfhkouby43b7" path="res://Assets/UI/Background/OriginTile.png" id="7_3c3do"]
+[ext_resource type="Texture2D" uid="uid://bljde5bxc0aiu" path="res://Assets/UI/ButtonIcons/RollAllIcon.png" id="7_y1ygp"]
+[ext_resource type="Texture2D" uid="uid://cjus2npmms6gk" path="res://Assets/UI/ButtonIcons/PlaceAllIcon.png" id="8_pffi3"]
+[ext_resource type="AudioStream" uid="uid://c57dj2ol05lyt" path="res://Assets/SFX/button_down.ogg" id="9_48j1k"]
+[ext_resource type="AudioStream" uid="uid://b0n5ls3rr34af" path="res://Assets/SFX/remove_die_item.ogg" id="9_gdybf"]
+[ext_resource type="AudioStream" uid="uid://dp6knt320qse4" path="res://Assets/SFX/button_up.ogg" id="10_7jxov"]
+[ext_resource type="Texture2D" uid="uid://djj0nd7bfxyxm" path="res://Assets/UI/ButtonIcons/RollTables.png" id="10_hsgxl"]
+[ext_resource type="Texture2D" uid="uid://652l16tokcl1" path="res://Assets/UI/ButtonIcons/ChangeViewIcon.png" id="10_ty6xh"]
+[ext_resource type="Texture2D" uid="uid://dp80e63fv7uww" path="res://Assets/UI/Buttons/plus_button.png" id="11_fp6hf"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kewbd"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("2_rirfd")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eg2i4"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_srbqy")
+
+[sub_resource type="Resource" id="Resource_0at77"]
+script = ExtResource("3_n7moq")
+entries = Array[String](["Laser Cannon", "Autocannon", "Railgun", "Particle Bean", "Missles (Light)", "Missiles (Heavy)"])
+descriptions = Array[String](["", "", "", "", "", "", "", "", "", ""])
+sub_roles = Array[int]([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+sub_role_units = Array[String](["", "", "", "", "", "", "", "", "", ""])
+sub_tables = Array[ExtResource("3_n7moq")]([null, null, null, null, null, null, null, null, null, null])
+
+[sub_resource type="Resource" id="Resource_gr8vl"]
+script = ExtResource("3_n7moq")
+entries = Array[String](["COMMAND", "COMMAND", "LIFE SUPPORT", "LIFE SUPPORT", "LIFE SUPPORT", "LIFE SUPPORT", "COMPUTER", "COMPUTER", "WEAPON", "WEAPON"])
+descriptions = Array[String](["Single cockpit, scarred by gunfire.", "Bridge with working comms.", "Functional.", "Repairable.", "Non-repairable.", "Level 2 Radiation.", "Contains an intact map of the current sector.", "Contains an intact mao of a random sector.", "", ""])
+sub_roles = Array[int]([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+sub_role_units = Array[String](["", "", "", "", "", "", "", "", "", ""])
+sub_tables = Array[ExtResource("3_n7moq")]([null, null, null, null, null, null, null, null, SubResource("Resource_0at77"), SubResource("Resource_0at77")])
+
+[sub_resource type="Resource" id="Resource_k4upp"]
+script = ExtResource("3_n7moq")
+entries = Array[String](["JUMP DRIVE", "JUMP DRIVE", "THRUSTERS", "THRUSTERS", "THRUSTERS", "ENGINE", "ENGINE", "ENGINE", "ENGINE", "ENGINE"])
+descriptions = Array[String](["Intact and salvagable.", "Completely destroyed.", "Intact and salvagable.", "Completely smelted.", "Completely smelted.", "Intact and salvageable.", "Intact and salvageable.", "Completely destroyed and unusable.", "Completely destroyed and unusable.", "Rigged to expode."])
+sub_roles = Array[int]([0, 0, 0, 0, 0, 10, 10, 0, 0, 10])
+sub_role_units = Array[String](["", "", "", "", "", "Fuel", "Fuel", "", "", "Minutes"])
+sub_tables = Array[ExtResource("3_n7moq")]([null, null, null, null, null, null, null, null, null, null])
+
+[sub_resource type="Resource" id="Resource_5v7bw"]
+script = ExtResource("3_n7moq")
+entries = Array[String](["GALLEY", "GALLEY", "GALLEY", "GALLEY", "HABITAT AREA", "HABITAT AREA", "HABITAT AREA", "LIVING QUARTERS", "LIVING QUARTERS", "LIVING QUARTERS"])
+descriptions = Array[String](["Food and supplies.", "Food and supplies.", "Completely varren, booby trapped.", "Weapon cache table.", "One survivor, unconscious.", "Roll on Weapon & Supply Cache table.", "Corpses.", "Roll on Weapon & Supply Cache table", "Booby trapped.", "Stowaway squatting here."])
+sub_roles = Array[int]([10, 10, 0, 0, 0, 0, 0, 0, 0, 0])
+sub_role_units = Array[String](["Months", "Months", "", "", "", "", "", "", "", ""])
+sub_tables = Array[ExtResource("3_n7moq")]([null, null, null, null, null, null, null, null, null, null])
+
+[sub_resource type="Resource" id="Resource_124gj"]
+script = ExtResource("3_n7moq")
+entries = Array[String](["MEDBAY", "MEDBAY", "MEDBAY", "SCIENCE LAB", "SCIENCE LAB", "CRYOCHAMBER", "CRYOCHAMBER", "CRYOCHAMBER", "CRYOCHAMBER", "COMPLETELY DESTROYED ROOM"])
+descriptions = Array[String](["Stocked to the gills. Roll twice on Weapon Cache.", "Completely picked over.", "1d10 first aid kits, 1d10 stimpacks.", "Strange creature in containment.", "Quarentined. Body save or 2d10 DMG.", "Filled with corpses. Fear Save.", "", "", "", ""])
+sub_roles = Array[int]([0, 0, 0, 0, 0, 0, 30, 30, 10, 0])
+sub_role_units = Array[String](["", "", "", "", "", "", "working cryopods", "working cryopods", "cryopods that seem fine. 25% chance of failure.", ""])
+sub_tables = Array[ExtResource("3_n7moq")]([null, null, null, null, null, null, null, null, null, null])
+
+[sub_resource type="Resource" id="Resource_fh2w5"]
+script = ExtResource("3_n7moq")
+entries = Array[String](["CARGO HOLD", "CARGO HOLD", "CARGO HOLD", "CARGO HOLD", "CARGO HOLD", "CARGO HOLD", "CARGO HOLD", "CARGO HOLD", "CARGO HOLD", "CARGO HOLD"])
+descriptions = Array[String](["", "", "", "", "", "", "", "Completely and totally empty.", "Currently being picked through by 2d10 armed scavengers.", "Currently being picked through by 2d10 armed scavengers."])
+sub_roles = Array[int]([10, 10, 10, 10, 10, 10, 10, 0, 0, 0])
+sub_role_units = Array[String](["Shipping Containers full of random cargo.", "Shipping Containers full of random cargo.", "Shipping Containers full of random cargo.", "Shipping Containers full of random cargo.", "Shipping Containers full of random cargo.", "Shipping Containers full of random cargo.", "Shipping Containers full of random cargo.", "", "", ""])
+sub_tables = Array[ExtResource("3_n7moq")]([null, null, null, null, null, null, null, null, null, null])
+
+[sub_resource type="Resource" id="Resource_lbqj8"]
+script = ExtResource("3_n7moq")
+entries = Array[String](["CARGO HOLD", "CARGO HOLD", "CARGO HOLD", "CARGO HOLD", "ENGINES", "ENGINES", "ENGINES", "ENGINES", "BARRAKS", "BARRAKS"])
+descriptions = Array[String](["Roll on Random Cargo table", "Roll on Random Cargo table", "Roll on Random Cargo table", "Roll on Random Cargo table", "", "", "", "Strange creature infestation.", "Fighting.", "Fighting."])
+sub_roles = Array[int]([0, 0, 0, 0, 5, 5, 5, 0, 20, 20])
+sub_role_units = Array[String](["", "", "", "", "squatters in vaccsuits huddling around the warmth of the engines.", "squatters in vaccsuits huddling around the warmth of the engines.", "squatters in vaccsuits huddling around the warmth of the engines.", "", "scavengers and crewmembers of the ship's original crew.", "scavengers and crewmembers of the ship's original crew."])
+sub_tables = Array[ExtResource("3_n7moq")]([null, null, null, null, null, null, null, null, null, null])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jpqwd"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("9_48j1k")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2vuuh"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("10_7jxov")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_17dej"]
+playback_mode = 1
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("9_gdybf")
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("placing_ghost", "roll_tables", "camera", "origin_rect")]
+script = ExtResource("1_rypjy")
+placing_ghost = NodePath("PlacingGhost")
+roll_tables = NodePath("RollTableSettings")
+camera = NodePath("Camera2D")
+origin_rect = NodePath("OriginTile")
+
+[node name="AudioStreams" type="Node" parent="."]
+
+[node name="PlacingSFX" type="AudioStreamPlayer2D" parent="AudioStreams"]
+stream = SubResource("AudioStreamRandomizer_kewbd")
+volume_db = -12.0
+bus = &"Buttons"
+
+[node name="StoringSFX" type="AudioStreamPlayer2D" parent="AudioStreams"]
+stream = SubResource("AudioStreamRandomizer_eg2i4")
+volume_db = -24.0
+bus = &"Buttons"
+
+[node name="RollTableSettings" type="Node" parent="."]
+script = ExtResource("2_mpfth")
+tables = Array[ExtResource("3_n7moq")]([SubResource("Resource_gr8vl"), SubResource("Resource_k4upp"), SubResource("Resource_5v7bw"), SubResource("Resource_124gj"), SubResource("Resource_fh2w5"), SubResource("Resource_lbqj8")])
+
+[node name="GridLayer" type="Marker2D" parent="."]
+gizmo_extents = 19.0
+
+[node name="PlacingGhost" parent="." instance=ExtResource("3_2da6m")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("grid_node")]
+script = ExtResource("5_1eu8a")
+grid_node = NodePath("../Background")
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -4096
+z_as_relative = false
+
+[node name="BG" type="ColorRect" parent="Background"]
+show_behind_parent = true
+z_index = -4096
+z_as_relative = false
+offset_left = -1300.0
+offset_top = -800.0
+offset_right = 1300.0
+offset_bottom = 800.0
+mouse_filter = 1
+color = Color(0.18359, 0.18359, 0.18359, 1)
+
+[node name="BGrid" type="TextureRect" parent="Background"]
+self_modulate = Color(0.396045, 0.395984, 0.443085, 1)
+show_behind_parent = true
+z_index = -4094
+z_as_relative = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1408.0
+offset_top = -906.0
+offset_right = 1399.0
+offset_bottom = 681.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.15625)
+texture = ExtResource("6_t6tya")
+stretch_mode = 1
+
+[node name="OriginTile" type="TextureRect" parent="."]
+z_index = -4095
+z_as_relative = false
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 33.0
+scale = Vector2(1, 1.15625)
+texture = ExtResource("7_3c3do")
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("4_3vn5e")
+
+[node name="AudioStreams" type="Node" parent="UI"]
+
+[node name="ButtonDownSFX" type="AudioStreamPlayer2D" parent="UI/AudioStreams"]
+stream = SubResource("AudioStreamRandomizer_jpqwd")
+bus = &"Buttons"
+
+[node name="ButtonUpSFX" type="AudioStreamPlayer2D" parent="UI/AudioStreams"]
+stream = SubResource("AudioStreamRandomizer_2vuuh")
+
+[node name="RemoveDieItemSFX" type="AudioStreamPlayer2D" parent="UI/AudioStreams"]
+stream = SubResource("AudioStreamRandomizer_17dej")
+volume_db = -6.0
+bus = &"Buttons"
+
+[node name="TabTray" type="Control" parent="UI"]
+custom_minimum_size = Vector2(298, 648)
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="ClosedAnchor" type="Control" parent="UI/TabTray"]
+anchors_preset = 0
+offset_left = 262.0
+offset_right = 262.0
+
+[node name="TextureRect" type="TextureRect" parent="UI/TabTray"]
+layout_mode = 2
+offset_right = 298.0
+offset_bottom = 648.0
+texture = ExtResource("4_maxtx")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/TabTray"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 74
+
+[node name="ColorRect" type="ColorRect" parent="UI/TabTray/MarginContainer"]
+visible = false
+layout_mode = 2
+color = Color(0.447059, 0.176471, 0.137255, 0.388235)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TabTray/MarginContainer"]
+layout_mode = 2
+
+[node name="Buttons" type="CenterContainer" parent="UI/TabTray/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons"]
+visible = false
+custom_minimum_size = Vector2(224, 80)
+layout_mode = 2
+color = Color(0.286275, 0.301961, 1, 0.392157)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(224, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Spacer" type="Control" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StoreButton" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer" instance=ExtResource("5_lnkvp")]
+layout_mode = 2
+icon = ExtResource("6_tjkja")
+
+[node name="Spacer2" type="Control" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RollAllButton" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer" instance=ExtResource("5_lnkvp")]
+layout_mode = 2
+icon = ExtResource("7_y1ygp")
+
+[node name="Spacer3" type="Control" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlaceAllButton" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer" instance=ExtResource("5_lnkvp")]
+layout_mode = 2
+icon = ExtResource("8_pffi3")
+
+[node name="Spacer4" type="Control" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Dice" type="MarginContainer" parent="UI/TabTray/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+
+[node name="ColorRect" type="ColorRect" parent="UI/TabTray/MarginContainer/VBoxContainer/Dice"]
+visible = false
+layout_mode = 2
+color = Color(0.282353, 1, 0.313726, 0.278431)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/TabTray/MarginContainer/VBoxContainer/Dice"]
+layout_mode = 2
+mouse_filter = 0
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TabTray/MarginContainer/VBoxContainer/Dice/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DiceContainer" type="VBoxContainer" parent="UI/TabTray/MarginContainer/VBoxContainer/Dice/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AddDiceButton" type="TextureButton" parent="UI/TabTray/MarginContainer/VBoxContainer/Dice/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Add new die"
+texture_normal = ExtResource("11_fp6hf")
+stretch_mode = 5
+
+[node name="BottomSpacer" type="Control" parent="UI/TabTray/MarginContainer/VBoxContainer/Dice/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="TabButton" type="TextureButton" parent="UI/TabTray"]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 109.0
+offset_right = 293.0
+offset_bottom = 278.0
+
+[node name="RightButtons" type="MarginContainer" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/RightButtons"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/RightButtons/CenterContainer"]
+layout_mode = 2
+
+[node name="SettingsButton" parent="UI/RightButtons/CenterContainer/VBoxContainer" instance=ExtResource("5_lnkvp")]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="UI/RightButtons/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="RollTables" parent="UI/RightButtons/CenterContainer/VBoxContainer" instance=ExtResource("5_lnkvp")]
+layout_mode = 2
+icon = ExtResource("10_hsgxl")
+
+[node name="Spacer2" type="Control" parent="UI/RightButtons/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="ChangeViewButton" parent="UI/RightButtons/CenterContainer/VBoxContainer" instance=ExtResource("5_lnkvp")]
+layout_mode = 2
+icon = ExtResource("10_ty6xh")
+
+[connection signal="item_clicked" from="UI" to="." method="_on_ui_item_clicked"]
+[connection signal="button_up" from="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer/StoreButton" to="UI" method="_on_store_button_button_up"]
+[connection signal="button_up" from="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer/RollAllButton" to="UI" method="_on_roll_all_button_button_up"]
+[connection signal="button_up" from="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer/PlaceAllButton" to="UI" method="_on_place_all_button_button_up"]
+[connection signal="button_down" from="UI/TabTray/MarginContainer/VBoxContainer/Dice/ScrollContainer/VBoxContainer/AddDiceButton" to="UI" method="_on_add_dice_button_button_down"]
+[connection signal="button_up" from="UI/TabTray/MarginContainer/VBoxContainer/Dice/ScrollContainer/VBoxContainer/AddDiceButton" to="UI" method="_on_add_dice_button_button_up"]
+[connection signal="button_up" from="UI/RightButtons/CenterContainer/VBoxContainer/RollTables" to="." method="_on_roll_tables_button_up"]

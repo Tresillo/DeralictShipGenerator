@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://44gjdk8s7iqd"]
+
+[ext_resource type="PackedScene" uid="uid://cfjdoevuhsx4o" path="res://Prefabs/iso_object.tscn" id="1_0i0xf"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_rypjy"]
+[ext_resource type="PackedScene" uid="uid://367j11gbkjps" path="res://Prefabs/placing_ghost.tscn" id="3_2da6m"]
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("test_object", "stationary_test_object", "placing_ghost")]
+script = ExtResource("1_rypjy")
+test_object = NodePath("GridLayer/IsoObject")
+stationary_test_object = NodePath("GridLayer/Stationary")
+placing_ghost = NodePath("PlacingGhost")
+
+[node name="GridLayer" type="Marker2D" parent="."]
+gizmo_extents = 19.0
+
+[node name="Stationary" parent="GridLayer" instance=ExtResource("1_0i0xf")]
+
+[node name="IsoObject" parent="GridLayer" instance=ExtResource("1_0i0xf")]
+z_index = 1
+isogrid_pos = Vector2i(0, -1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PlacingGhost" parent="." instance=ExtResource("3_2da6m")]

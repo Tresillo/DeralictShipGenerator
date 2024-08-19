@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6j4opv2d2rgg"]
+
+[ext_resource type="Texture2D" uid="uid://bj23ccgvvwb74" path="res://Assets/UI/Buttons/ButtonUp.png" id="1_x5dnq"]
+[ext_resource type="Texture2D" uid="uid://b8g1qjikhykkn" path="res://Assets/UI/Buttons/ButtonDown.png" id="2_rxvwr"]
+[ext_resource type="Texture2D" uid="uid://b6fbydy861hcv" path="res://Assets/UI/Buttons/ButtonHover.png" id="3_ejf4w"]
+[ext_resource type="Script" path="res://Scripts/button_base.gd" id="4_p7vds"]
+[ext_resource type="Texture2D" uid="uid://b84njcd0fm2cr" path="res://Assets/UI/ButtonIcons/SettingsIcon.png" id="5_yx7rw"]
+[ext_resource type="AudioStream" uid="uid://c57dj2ol05lyt" path="res://Assets/SFX/button_down.ogg" id="6_si1ng"]
+[ext_resource type="AudioStream" uid="uid://dp6knt320qse4" path="res://Assets/SFX/button_up.ogg" id="7_amr26"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mypca"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("6_si1ng")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ybl71"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("7_amr26")
+
+[node name="ButtonBase" type="TextureButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -524.0
+offset_bottom = -272.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_x5dnq")
+texture_pressed = ExtResource("2_rxvwr")
+texture_hover = ExtResource("3_ejf4w")
+script = ExtResource("4_p7vds")
+icon = ExtResource("5_yx7rw")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IconTexture" type="TextureRect" parent="CenterContainer"]
+layout_mode = 2
+texture = ExtResource("5_yx7rw")
+
+[node name="AudioStreams" type="Node" parent="."]
+
+[node name="ButtonDownSFX" type="AudioStreamPlayer2D" parent="AudioStreams"]
+stream = SubResource("AudioStreamRandomizer_mypca")
+bus = &"Buttons"
+
+[node name="ButtonUpSFX" type="AudioStreamPlayer2D" parent="AudioStreams"]
+stream = SubResource("AudioStreamRandomizer_ybl71")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]

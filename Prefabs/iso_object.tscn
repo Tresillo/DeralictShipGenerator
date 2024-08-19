@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfjdoevuhsx4o"]
+
+[ext_resource type="Script" path="res://Scripts/iso_object.gd" id="1_fqiai"]
+[ext_resource type="Texture2D" uid="uid://dr10ciqdo53cg" path="res://Assets/Dice/EmptyDie.png" id="2_esvre"]
+[ext_resource type="FontFile" uid="uid://c6em21cf3yld1" path="res://Assets/UI/Fonts/HomeVideo-Regular.ttf" id="2_vji0c"]
+
+[sub_resource type="Theme" id="Theme_ve300"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/line_spacing = 2
+Label/constants/outline_size = 8
+Label/font_sizes/font_size = 8
+Label/fonts/font = ExtResource("2_vji0c")
+
+[node name="IsoObject" type="Node2D" groups=["iso_object", "rollable"]]
+script = ExtResource("1_fqiai")
+
+[node name="RolltableTitle" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -54.0
+offset_top = -26.0
+offset_right = 54.0
+offset_bottom = -12.0
+theme = SubResource("Theme_ve300")
+text = "PLACEHOLDER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_esvre")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -37, 32, -19, 32, 18, 0, 37, -32, 18, -32, -19)

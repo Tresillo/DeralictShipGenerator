@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://ctisjefie00x2"]
+
+[ext_resource type="Texture2D" uid="uid://b6fbydy861hcv" path="res://Assets/UI/Buttons/ButtonHover.png" id="1_kxkdq"]
+[ext_resource type="Texture2D" uid="uid://bj23ccgvvwb74" path="res://Assets/UI/Buttons/ButtonUp.png" id="2_hbrku"]
+[ext_resource type="Texture2D" uid="uid://b8g1qjikhykkn" path="res://Assets/UI/Buttons/ButtonDown.png" id="3_ise3q"]
+
+[sub_resource type="SystemFont" id="SystemFont_m28ir"]
+font_weight = 450
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wsc2s"]
+texture = ExtResource("1_kxkdq")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ifnhp"]
+texture = ExtResource("2_hbrku")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d286x"]
+texture = ExtResource("3_ise3q")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/fonts/font = SubResource("SystemFont_m28ir")
+Button/styles/hover = SubResource("StyleBoxTexture_wsc2s")
+Button/styles/normal = SubResource("StyleBoxTexture_ifnhp")
+Button/styles/pressed = SubResource("StyleBoxTexture_d286x")

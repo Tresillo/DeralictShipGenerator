@@ -1,0 +1,204 @@
+[gd_scene load_steps=14 format=3 uid="uid://44gjdk8s7iqd"]
+
+[ext_resource type="PackedScene" uid="uid://cfjdoevuhsx4o" path="res://Prefabs/iso_object.tscn" id="1_0i0xf"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_rypjy"]
+[ext_resource type="PackedScene" uid="uid://367j11gbkjps" path="res://Prefabs/placing_ghost.tscn" id="3_2da6m"]
+[ext_resource type="Script" path="res://Scripts/UIController.gd" id="4_3vn5e"]
+[ext_resource type="Texture2D" uid="uid://c0qjxj4xp3ct8" path="res://Assets/UI/DiceTrayTrimmed.png" id="4_maxtx"]
+[ext_resource type="PackedScene" uid="uid://c6j4opv2d2rgg" path="res://Prefabs/button_base.tscn" id="5_lnkvp"]
+[ext_resource type="PackedScene" uid="uid://b64j3rdosaq27" path="res://Prefabs/dice_item.tscn" id="6_bvixf"]
+[ext_resource type="Texture2D" uid="uid://rxb3oxrbrppd" path="res://Assets/UI/ButtonIcons/PutAwayIcon.png" id="6_tjkja"]
+[ext_resource type="Texture2D" uid="uid://bljde5bxc0aiu" path="res://Assets/UI/ButtonIcons/RollAllIcon.png" id="7_y1ygp"]
+[ext_resource type="Texture2D" uid="uid://cjus2npmms6gk" path="res://Assets/UI/ButtonIcons/PlaceAllIcon.png" id="8_pffi3"]
+[ext_resource type="Texture2D" uid="uid://dvtkye3q0iqs5" path="res://Assets/UI/ButtonIcons/SaveIcon.png" id="10_q4uxb"]
+[ext_resource type="Texture2D" uid="uid://652l16tokcl1" path="res://Assets/UI/ButtonIcons/ChangeViewIcon.png" id="10_ty6xh"]
+[ext_resource type="Texture2D" uid="uid://dp80e63fv7uww" path="res://Assets/UI/Buttons/plus_button.png" id="11_fp6hf"]
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("test_object", "stationary_test_object", "placing_ghost")]
+script = ExtResource("1_rypjy")
+test_object = NodePath("GridLayer/IsoObject")
+stationary_test_object = NodePath("GridLayer/Stationary")
+placing_ghost = NodePath("PlacingGhost")
+
+[node name="GridLayer" type="Marker2D" parent="."]
+gizmo_extents = 19.0
+
+[node name="Stationary" parent="GridLayer" instance=ExtResource("1_0i0xf")]
+
+[node name="IsoObject" parent="GridLayer" instance=ExtResource("1_0i0xf")]
+z_index = 1
+
+[node name="PlacingGhost" parent="." instance=ExtResource("3_2da6m")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="BG" type="ColorRect" parent="Camera2D"]
+visible = false
+show_behind_parent = true
+z_index = -4096
+offset_left = -585.0
+offset_top = -335.0
+offset_right = 584.0
+offset_bottom = 331.0
+color = Color(0.27451, 0.27451, 0.27451, 1)
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("4_3vn5e")
+
+[node name="TabTray" type="Control" parent="UI"]
+custom_minimum_size = Vector2(298, 648)
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="ClosedAnchor" type="Control" parent="UI/TabTray"]
+anchors_preset = 0
+offset_left = 262.0
+offset_right = 262.0
+
+[node name="TextureRect" type="TextureRect" parent="UI/TabTray"]
+layout_mode = 2
+offset_right = 298.0
+offset_bottom = 648.0
+texture = ExtResource("4_maxtx")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/TabTray"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 74
+
+[node name="ColorRect" type="ColorRect" parent="UI/TabTray/MarginContainer"]
+visible = false
+layout_mode = 2
+color = Color(0.447059, 0.176471, 0.137255, 0.388235)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TabTray/MarginContainer"]
+layout_mode = 2
+
+[node name="Buttons" type="CenterContainer" parent="UI/TabTray/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons"]
+visible = false
+custom_minimum_size = Vector2(224, 80)
+layout_mode = 2
+color = Color(0.286275, 0.301961, 1, 0.392157)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(224, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Spacer" type="Control" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StoreButton" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer" instance=ExtResource("5_lnkvp")]
+layout_mode = 2
+icon = ExtResource("6_tjkja")
+
+[node name="Spacer2" type="Control" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RollAllButton" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer" instance=ExtResource("5_lnkvp")]
+layout_mode = 2
+icon = ExtResource("7_y1ygp")
+
+[node name="Spacer3" type="Control" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlaceAllButton" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer" instance=ExtResource("5_lnkvp")]
+layout_mode = 2
+icon = ExtResource("8_pffi3")
+
+[node name="Spacer4" type="Control" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Dice" type="MarginContainer" parent="UI/TabTray/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+
+[node name="ColorRect" type="ColorRect" parent="UI/TabTray/MarginContainer/VBoxContainer/Dice"]
+visible = false
+layout_mode = 2
+color = Color(0.282353, 1, 0.313726, 0.278431)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/TabTray/MarginContainer/VBoxContainer/Dice"]
+layout_mode = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TabTray/MarginContainer/VBoxContainer/Dice/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DiceContainer" type="VBoxContainer" parent="UI/TabTray/MarginContainer/VBoxContainer/Dice/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DiceItem" parent="UI/TabTray/MarginContainer/VBoxContainer/Dice/ScrollContainer/VBoxContainer/DiceContainer" instance=ExtResource("6_bvixf")]
+layout_mode = 2
+
+[node name="AddDiceButton" type="TextureButton" parent="UI/TabTray/MarginContainer/VBoxContainer/Dice/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("11_fp6hf")
+stretch_mode = 5
+
+[node name="BottomSpacer" type="Control" parent="UI/TabTray/MarginContainer/VBoxContainer/Dice/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="TabButton" type="TextureButton" parent="UI/TabTray"]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 109.0
+offset_right = 293.0
+offset_bottom = 278.0
+
+[node name="RightButtons" type="MarginContainer" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/RightButtons"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/RightButtons/CenterContainer"]
+layout_mode = 2
+
+[node name="SettingsButton" parent="UI/RightButtons/CenterContainer/VBoxContainer" instance=ExtResource("5_lnkvp")]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="UI/RightButtons/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="SaveButton" parent="UI/RightButtons/CenterContainer/VBoxContainer" instance=ExtResource("5_lnkvp")]
+layout_mode = 2
+icon = ExtResource("10_q4uxb")
+
+[node name="Spacer2" type="Control" parent="UI/RightButtons/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="ChangeViewButton" parent="UI/RightButtons/CenterContainer/VBoxContainer" instance=ExtResource("5_lnkvp")]
+layout_mode = 2
+icon = ExtResource("10_ty6xh")
+
+[connection signal="button_down" from="UI/TabTray/MarginContainer/VBoxContainer/Dice/ScrollContainer/VBoxContainer/AddDiceButton" to="UI" method="_on_add_dice_button_button_down"]

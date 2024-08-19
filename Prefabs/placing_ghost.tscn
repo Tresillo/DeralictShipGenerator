@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://367j11gbkjps"]
+
+[ext_resource type="Script" path="res://Scripts/PlacingGhost.gd" id="1_ebrgg"]
+[ext_resource type="Texture2D" uid="uid://dr10ciqdo53cg" path="res://Assets/Dice/EmptyDie.png" id="2_p05w4"]
+[ext_resource type="Texture2D" uid="uid://xxd256wxmfps" path="res://Assets/icon.svg" id="3_jfopg"]
+
+[node name="PlacingGhost" type="Node2D"]
+script = ExtResource("1_ebrgg")
+
+[node name="PlacingDisplay" type="Sprite2D" parent="."]
+modulate = Color(1, 0.509804, 0.411765, 0.784314)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_p05w4")
+
+[node name="MouseFollower" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+top_level = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_p05w4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = 1000
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_jfopg")
