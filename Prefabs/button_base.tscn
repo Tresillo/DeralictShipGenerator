@@ -32,6 +32,12 @@ offset_right = -524.0
 offset_bottom = -272.0
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "a
+a
+a
+a
+a
+a"
 texture_normal = ExtResource("1_x5dnq")
 texture_pressed = ExtResource("2_rxvwr")
 texture_hover = ExtResource("3_ejf4w")

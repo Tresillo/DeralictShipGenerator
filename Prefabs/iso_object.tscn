@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfjdoevuhsx4o"]
+[gd_scene load_steps=6 format=3 uid="uid://cfjdoevuhsx4o"]
 
 [ext_resource type="Script" path="res://Scripts/iso_object.gd" id="1_fqiai"]
 [ext_resource type="Texture2D" uid="uid://dr10ciqdo53cg" path="res://Assets/Dice/EmptyDie.png" id="2_esvre"]
 [ext_resource type="FontFile" uid="uid://c6em21cf3yld1" path="res://Assets/UI/Fonts/HomeVideo-Regular.ttf" id="2_vji0c"]
+[ext_resource type="Script" path="res://Prefabs/IsoObjectTexture.gd" id="4_nkl14"]
 
 [sub_resource type="Theme" id="Theme_ve300"]
 Label/colors/font_color = Color(1, 1, 1, 1)
@@ -27,9 +28,21 @@ text = "PLACEHOLDER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -37.0
+offset_right = 96.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_esvre")
+script = ExtResource("4_nkl14")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 0

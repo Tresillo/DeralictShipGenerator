@@ -24,7 +24,7 @@ func _ready():
 	grid_size = isoenv_node.ISOGRIDSIZE
 	
 	z_layer = 0
-	($Sprite2D as Sprite2D).z_index = z_layer
+	($Sprite2D as TextureRect).z_index = z_layer
 	#update_iso_grid_pos(isogrid_pos)
 	
 	#lil place animation for JUICE(tm)
@@ -99,3 +99,4 @@ func update_roll_table(new_roll: Dictionary):
 	
 	$RolltableTitle.text = roll_table_results["title"]
 	$RolltableTitle.visible = true
+	$Sprite2D.roll_table_results = roll_table_results

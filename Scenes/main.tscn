@@ -262,6 +262,7 @@ size_flags_horizontal = 3
 [node name="StoreButton" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer" instance=ExtResource("5_lnkvp")]
 layout_mode = 2
 icon = ExtResource("6_tjkja")
+tooltip_content = "Store all placed dice"
 
 [node name="Spacer2" type="Control" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer"]
 layout_mode = 2
@@ -270,6 +271,7 @@ size_flags_horizontal = 3
 [node name="RollAllButton" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer" instance=ExtResource("5_lnkvp")]
 layout_mode = 2
 icon = ExtResource("7_y1ygp")
+tooltip_content = "Reroll all dice"
 
 [node name="Spacer3" type="Control" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer"]
 layout_mode = 2
@@ -278,6 +280,7 @@ size_flags_horizontal = 3
 [node name="PlaceAllButton" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer" instance=ExtResource("5_lnkvp")]
 layout_mode = 2
 icon = ExtResource("8_pffi3")
+tooltip_content = "Place all dice in tray"
 
 [node name="Spacer4" type="Control" parent="UI/TabTray/MarginContainer/VBoxContainer/Buttons/HBoxContainer"]
 layout_mode = 2
@@ -344,6 +347,7 @@ layout_mode = 2
 
 [node name="SettingsButton" parent="UI/RightButtons/CenterContainer/VBoxContainer" instance=ExtResource("5_lnkvp")]
 layout_mode = 2
+tooltip_content = "Open settings panel"
 
 [node name="Spacer" type="Control" parent="UI/RightButtons/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
@@ -352,6 +356,7 @@ layout_mode = 2
 [node name="RollTables" parent="UI/RightButtons/CenterContainer/VBoxContainer" instance=ExtResource("5_lnkvp")]
 layout_mode = 2
 icon = ExtResource("10_hsgxl")
+tooltip_content = "Roll rooms for each placed die"
 
 [node name="Spacer2" type="Control" parent="UI/RightButtons/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)

@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://goa3h3vik5so"]
+
+[ext_resource type="Theme" uid="uid://ctisjefie00x2" path="res://Assets/UI/Themes/Button.tres" id="1_gnctk"]
+[ext_resource type="FontFile" uid="uid://c6em21cf3yld1" path="res://Assets/UI/Fonts/HomeVideo-Regular.ttf" id="2_rmuvy"]
+[ext_resource type="Script" path="res://Scripts/popup_panel.gd" id="2_s4gpr"]
+
+[node name="PopupPanel" type="Control"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 250.0
+offset_bottom = 73.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_gnctk")
+script = ExtResource("2_s4gpr")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("1_gnctk")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_rmuvy")
+bbcode_enabled = true
+text = "[center]Placeholder[/center]"
+fit_content = true
+scroll_active = false
