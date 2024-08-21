@@ -23,16 +23,19 @@ func _ready():
 	coords = IsoCoord.new()
 	grid_size = isoenv_node.ISOGRIDSIZE
 	
-	z_layer = 0
-	($Sprite2D as TextureRect).z_index = z_layer
-	#update_iso_grid_pos(isogrid_pos)
+	#z_layer = 0
+	#($Sprite2D as TextureRect).z_index = z_layer
+	if roll_table_results:
+		update_roll_table(roll_table_results)
 	
 	#lil place animation for JUICE(tm)
+	var sprite_end_pos = $Sprite2D.position
+	var sprite_start_pos = Vector2(sprite_end_pos.x, sprite_end_pos.y + place_anim_dist)
 	place_tween = get_tree().create_tween().bind_node(self)\
 			.set_trans(Tween.TRANS_BACK)\
 			.set_ease(Tween.EASE_IN)
-	place_tween.tween_callback(func(): $Sprite2D.position = Vector2(0, place_anim_dist))
-	place_tween.tween_property($Sprite2D,"position", Vector2.ZERO, place_anim_time)
+	place_tween.tween_callback(func(): $Sprite2D.position = sprite_start_pos)
+	place_tween.tween_property($Sprite2D,"position", sprite_end_pos, place_anim_time)
 	#place_tween.tween_callback(func(): print("place sound"))
 
 

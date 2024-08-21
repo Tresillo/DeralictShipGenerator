@@ -8,10 +8,6 @@ func set_text(txt: String):
 	if not label_node:
 		await self.ready
 	label_node.text = txt
-
-
-func set_text_from_dict(die_res: Dictionary):
-	if not label_node:
-		await self.ready
 	
-	pass
+	var text_height = $PanelContainer/MarginContainer/RichTextLabel.get_content_height()
+	custom_minimum_size = Vector2(custom_minimum_size.x, text_height)
